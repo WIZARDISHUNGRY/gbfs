@@ -3,6 +3,7 @@ package gbfs
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 	"reflect"
 	"strconv"
@@ -130,7 +131,7 @@ func (c *Client) Get(feed Feed) error {
 		gbfsFeed = &FeedGbfs{}
 		err = c.Get(gbfsFeed)
 		if err != nil {
-			return ErrFailedAutodiscoveryURL
+			return fmt.Errorf("%w: %v", ErrFailedAutodiscoveryURL, err)
 		}
 	}
 	language := feed.GetLanguage()

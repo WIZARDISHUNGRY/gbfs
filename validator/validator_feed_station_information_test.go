@@ -135,9 +135,9 @@ func TestValidateFeedStationInformation(t *testing.T) {
 	}
 	station.IsVirtualStation = gbfs.NewBoolean(false)
 	station.StationArea = gbfs.NewGeoJSONGeometryMultiPolygon(nil, nil)
-	station.VehicleCapacity = map[*gbfs.ID]int64{}
+	station.VehicleCapacity = map[gbfs.ID]int64{}
 	station.IsValetStation = gbfs.NewBoolean(false)
-	station.VehicleTypeCapacity = map[*gbfs.ID]int64{}
+	station.VehicleTypeCapacity = map[gbfs.ID]int64{}
 	r = ValidateFeedStationInformation(f, "1.1")
 	if errorCount(r.Infos, ErrAvailableFromVersion) != 5 {
 		t.Errorf("expected 5 infos of [%s], got %v", ErrAvailableFromVersion, r.Infos)
